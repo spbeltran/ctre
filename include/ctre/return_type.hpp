@@ -88,7 +88,7 @@ template <size_t Id, typename Name = void> struct captured_content {
 			} else { // I'm doing this to avoid warning about dead code
 #endif
 			
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && __cplusplus >= 202002L
 			return std::to_address(_begin); // I'm enabling this only for MSVC for now, as some clang old versions with various libraries (random combinations) has different problems
 #else
 			return &*_begin; 
